@@ -1,7 +1,7 @@
 import { FC, useEffect, useContext } from "react";
 import getCommerce from "../utils/commerce";
 import { Store } from "../components/Store";
-import Head from "next/Head";
+import Head from "next/head";
 import { Navbar } from "./Navbar";
 import { Footer } from "./Footer";
 
