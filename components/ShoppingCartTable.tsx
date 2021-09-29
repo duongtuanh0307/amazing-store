@@ -1,6 +1,6 @@
 import { ChangeEvent, FC } from "react";
 import { CartItem } from "../types/Cart";
-import RemoveIcon from "../public/assets/Remove";
+import RemoveIcon from "./icons/Remove";
 
 type Props = {
   items: CartItem[];

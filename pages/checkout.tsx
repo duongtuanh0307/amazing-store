@@ -17,7 +17,7 @@ import { CustomerInfo } from "../components/checkout/CustomerInfo";
 import { ShippingInfo } from "../components/checkout/ShippingInfo";
 import { PaymentInfo } from "../components/checkout/PaymentInfo";
 import { ActionButtons } from "../components/checkout/ActionButtons";
-import CheckIcon from "../public/assets/CheckIcon";
+import CheckIcon from "../components/icons/CheckIcon";
 import getCommerce from "../utils/commerce";
 
 const FORM_LABELS = [

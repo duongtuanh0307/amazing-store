@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import { FC } from "react";
-import CartIcon from "../public/assets/Cart";
+import CartIcon from "./icons/Cart";
 import { CartState } from "../types/Cart";
 
 type Props = {
