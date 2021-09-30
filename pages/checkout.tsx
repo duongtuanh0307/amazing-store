@@ -136,7 +136,6 @@ const Checkout = () => {
     value: string
   ) => {
     setShippingInfo({ ...shippingInfo, [key]: value });
-    console.log(shippingInfo);
   };
 
   const handleChangePaymentInfo = (
@@ -147,7 +146,7 @@ const Checkout = () => {
   };
 
   return (
-    <div className='p-4 border border-gray-200 rounded mx-auto mb-8'>
+    <div className='p-4 border border-gray-200 rounded mx-auto mb-8 bg-white'>
       <h3 className='font-bold text-2xl flex justify-center mb-8'>Checkout</h3>
       <Tabs
         selectedIndex={activeStep}
@@ -155,10 +154,10 @@ const Checkout = () => {
       >
         <TabList className='flex'>
           {FORM_LABELS.map((formLabel, index) => {
-            const finishedStep = index <= activeStep;
+            const finishedStep = index < activeStep;
             return (
               <Tab key={index} className='flex flex-col items-center px-4'>
-                <p className='flex justify-center w-8 h-8 rounded-full bg-green-600 p-1 font-bold text-white'>
+                <p className='flex justify-center w-8 h-8 rounded-full bg-blue-900 p-1 font-bold text-white'>
                   {finishedStep ? <CheckIcon /> : index + 1}
                 </p>
                 <span className='text-sm font-semibold uppercase mt-2'>

@@ -19,19 +19,19 @@ const Confirmation: FC = () => {
       <h3 className='w-full text-3xl font-semibold pb-8'>{`Order ${order.id}`}</h3>
       <div className='flex'>
         <div className='flex flex-col w-full mr-12'>
-          <div className='border border-gray-200 rounded p-4 mb-4'>
+          <div className='border border-gray-200 rounded p-4 mb-4 bg-white'>
             <h5 className='font-semibold text-xl pb-4'>Customer Details</h5>
             <p>{`${order.customer.firstname} ${order.customer.lastname}`}</p>
             <p>{order.customer.email}</p>
           </div>
-          <div className='border border-gray-200 rounded p-4 mb-4'>
+          <div className='border border-gray-200 rounded p-4 mb-4 bg-white'>
             <h5 className='font-semibold text-xl pb-4'>Shipping Details</h5>
             <p>{order.shipping.name}</p>
             <p>{order.shipping.street}</p>
             <p>{`${order.shipping.town_city} ${order.shipping.postal_zip_code}`}</p>
             <p>{order.shipping.country}</p>
           </div>
-          <div className='border border-gray-200 rounded p-4 mb-4'>
+          <div className='border border-gray-200 rounded p-4 mb-4 bg-white'>
             <h5 className='font-semibold text-xl pb-4'>Payment Details</h5>
             {order.transactions && order.transactions[0] ? (
               <>
@@ -45,7 +45,7 @@ const Confirmation: FC = () => {
               <p>No Payment Found</p>
             )}
           </div>
-          <div className='border border-gray-200 rounded p-4 mb-4'>
+          <div className='border border-gray-200 rounded p-4 mb-4 bg-white'>
             <h5 className='font-semibold text-xl pb-4'>Order Items</h5>
             <div className='w-11/12'>
               <ShoppingCartTable notEditable items={order.order.line_items} />
@@ -53,7 +53,7 @@ const Confirmation: FC = () => {
           </div>
         </div>
 
-        <div className='flex flex-col h-64 w-96 min-w-96 border border-gray-200 rounded p-8'>
+        <div className='flex flex-col h-64 w-96 min-w-96 border border-gray-200 rounded p-8 bg-white'>
           <h5 className='font-semibold text-xl pb-4'>Order Summary</h5>
           <div className='flex justify-between'>
             <p>Subtotal</p>
@@ -74,7 +74,7 @@ const Confirmation: FC = () => {
 
           <div className='flex justify-between mt-4 text-xl font-semibold'>
             <p>Total Paid</p>
-            <p className='text-2xl text-green-700'>{`$${order.order.total_with_tax.raw}`}</p>
+            <p className='text-2xl text-blue-700'>{`$${order.order.total_with_tax.raw}`}</p>
           </div>
         </div>
       </div>

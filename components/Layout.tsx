@@ -27,15 +27,15 @@ const Layout: FC<Props> = ({ children, commercePublicKey }) => {
   return (
     <div>
       <Head>
-        <title>Amazing Store</title>
+        <title>Awesome Store</title>
         <meta
           name='description'
-          content='Amazing shop - where you can find beautiful terrarium to decorate your home or office'
+          content='Awesome Store - a van that sells mysterious items'
         />
         <link rel='icon' href='/favicon.ico' />
       </Head>
 
-      <div className='flex flex-col'>
+      <div className='flex flex-col bg-amazing-world bg-cover bg-no-repeat'>
         <Navbar cartData={cart} />
         <div className='flex flex-col justify-between min-h-screen h-full overflow-auto'>
           <main className='flex mt-16 p-4 pt-12'>{children}</main>

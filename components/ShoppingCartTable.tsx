@@ -42,7 +42,7 @@ export const ShoppingCartTable: FC<Props> = ({
                     type='number'
                     value={item.quantity}
                     onChange={changeQuantity}
-                    className='text-right bg-gray-100 border-b-2 border-gray-200 focus:border-green-500 focus:outline-none w-16'
+                    className='text-right bg-gray-100 border-b-2 border-gray-200 focus:border-blue-500 focus:outline-none w-16'
                   />
                 )}
               </td>

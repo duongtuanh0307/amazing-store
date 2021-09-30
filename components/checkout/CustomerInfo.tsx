@@ -19,7 +19,7 @@ export const CustomerInfo = ({ customerInfo, handleChangeCustomerInfo }) => {
         <div className='pt-4 flex flex-col' key={index}>
           <label className='text-sm font-bold pb-1'>{LABELS[index]}</label>
           <input
-            className='border rounded py-1 px-4 focus:border-green-500 focus:outline-none'
+            className='border rounded py-1 px-4 focus:border-blue-500 focus:outline-none'
             value={customerInfo[field]}
             type='text'
             onChange={(e: ChangeEvent<HTMLInputElement>) =>

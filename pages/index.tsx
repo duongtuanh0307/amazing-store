@@ -10,11 +10,11 @@ type Props = {
 export default function Home(props: Props) {
   const { products } = props;
   return (
-    <div className='w-full'>
+    <div className='w-full mb-8 px-8'>
       {products.length <= 0 ? (
         <div className='uppercase'>No product found</div>
       ) : (
-        <div className='flex'>
+        <div className='flex flex-wrap w-full'>
           {products.map((product) => (
             <ProductItem product={product} key={product.id} />
           ))}

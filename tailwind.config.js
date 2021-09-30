@@ -4,8 +4,13 @@ module.exports = {
   theme: {
     minWidth: {
       96: "24rem",
+      60: "15rem",
     },
-    extend: {},
+    extend: {
+      backgroundImage: {
+        "amazing-world": "url('../../public/images/galaxy.jpeg')",
+      },
+    },
   },
   variants: {
     extend: {

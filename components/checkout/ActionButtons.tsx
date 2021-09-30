@@ -19,7 +19,7 @@ export const ActionButtons: FC<Props> = ({
     <div className='w-full flex justify-end px-4'>
       <button
         onClick={handleNext}
-        className='border-2 border-green-600 bg-green-600 rounded px-8 py-1 uppercase text-white text-sm font-semibold'
+        className='border-2 border-blue-900 bg-blue-900 rounded px-8 py-1 uppercase text-white text-sm font-semibold'
       >
         next
       </button>
@@ -33,7 +33,7 @@ export const ActionButtons: FC<Props> = ({
         back
       </button>
       <button
-        className='border-2 border-green-600 bg-green-600 rounded px-8 py-1 uppercase text-white text-sm font-semibold'
+        className='border-2 border-blue-900 bg-blue-900 rounded px-8 py-1 uppercase text-white text-sm font-semibold'
         onClick={handleConfirmOrder}
       >
         Confirm order
@@ -48,7 +48,7 @@ export const ActionButtons: FC<Props> = ({
         back
       </button>
       <button
-        className='border-2 border-green-600 bg-green-600 rounded px-8 py-1 uppercase text-white text-sm font-semibold'
+        className='border-2 border-blue-900 bg-blue-900 rounded px-8 py-1 uppercase text-white text-sm font-semibold'
         onClick={handleNext}
       >
         next

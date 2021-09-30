@@ -68,7 +68,7 @@ export const ShippingInfo: FC<Props> = ({
             {LABELS[index]}
           </label>
           <input
-            className='border rounded py-1 px-4 focus:border-green-500 focus:outline-none'
+            className='border rounded py-1 px-4 focus:border-blue-500 focus:outline-none'
             value={shippingInfo[field]}
             type='text'
             id={field}
@@ -90,7 +90,7 @@ export const ShippingInfo: FC<Props> = ({
             handleChangeShippingInfo("province", e.target.value)
           }
           value={shippingInfo.province}
-          className='py-1 pr-4 border-b-2 border-gray-200 focus:border-green-500 focus:outline-none'
+          className='py-1 pr-4 border-b-2 border-gray-200 focus:border-blue-500 focus:outline-none'
         />
       </div>
       <div className='pt-4 flex flex-col'>
@@ -104,7 +104,7 @@ export const ShippingInfo: FC<Props> = ({
             handleChangeShippingInfo("shippingOption", e.target.value)
           }
           value={shippingInfo.province}
-          className='py-1 pr-4 border-b-2 border-gray-200 focus:border-green-500 focus:outline-none'
+          className='py-1 pr-4 border-b-2 border-gray-200 focus:border-blue-500 focus:outline-none'
         >
           {shippingOptions.map((option) => (
             <option
