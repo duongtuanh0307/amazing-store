@@ -20,6 +20,7 @@ import { ActionButtons } from "../components/checkout/ActionButtons";
 import CheckIcon from "../components/icons/CheckIcon";
 import getCommerce from "../utils/commerce";
 import { ShoppingCartTable } from "../components/ShoppingCartTable";
+import { CartItem } from "../types/Cart";
 
 const FORM_LABELS = [
   "Customer Infomation",
@@ -54,7 +55,6 @@ const Checkout = () => {
       const token = await commerce.checkout.generateToken(cart.data?.id, {
         type: "cart",
       });
-      console.log(cart.data);
       setCheckoutToken(token);
     } else {
       router.push("/cart");
@@ -77,8 +77,20 @@ const Checkout = () => {
   };
 
   const handleConfirmOrder = async () => {
+    const lineItems =
+      checkoutToken.live.line_items.length <= 0
+        ? {}
+        : checkoutToken.live.line_items.reduce(
+            (obj: Object, item: CartItem) =>
+              Object.assign(obj, {
+                [item.id]: {
+                  ...item,
+                },
+              }),
+            {}
+          );
     const orderData = {
-      line_items: checkoutToken.live.line_items,
+      line_items: lineItems,
       customer: {
         firstname: customerInfo.firstName,
         lastname: customerInfo.lastName,
@@ -106,7 +118,6 @@ const Checkout = () => {
         },
       },
     };
-    console.log(orderData.line_items);
     const commerce = getCommerce();
     try {
       const order = await commerce.checkout.capture(
