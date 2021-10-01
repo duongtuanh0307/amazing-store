@@ -28,7 +28,7 @@ const SingleProduct: FC<Props> = (props) => {
     );
     if (lineItem) {
       const cartData = await commerce.cart.update(lineItem.id, {
-        quantity,
+        quantity: quantity,
       });
       dispatch({ type: "CART_RETRIEVE_SUCCESS", payload: cartData.cart });
     } else {

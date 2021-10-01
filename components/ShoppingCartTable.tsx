@@ -33,7 +33,7 @@ export const ShoppingCartTable: FC<Props> = ({
           };
           return (
             <tr key={item.id} className='border-b border-gray-200 py-2'>
-              <td className='p-2'>{item.name}</td>
+              <td className='p-2'>{item.name ?? item.product_name}</td>
               <td className='p-2 text-center'>
                 {notEditable ? (
                   <p>{item.quantity}</p>

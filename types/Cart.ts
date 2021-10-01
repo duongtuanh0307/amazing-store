@@ -17,7 +17,8 @@ export type CartData = {
 export type CartItem = {
   id: string;
   product_id: string;
-  name: string;
+  name?: string;
+  product_name?: string;
   quantity: number;
   price: {
     raw: number;

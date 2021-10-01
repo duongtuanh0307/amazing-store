@@ -49,11 +49,12 @@ const Checkout = () => {
   }, [cart.loading]);
 
   const generateCheckoutToken = async () => {
-    if (cart.data.line_items.length) {
+    if (cart.data?.line_items.length) {
       const commerce = getCommerce();
-      const token = await commerce.checkout.generateToken(cart.data.id, {
+      const token = await commerce.checkout.generateToken(cart.data?.id, {
         type: "cart",
       });
+      console.log(cart.data);
       setCheckoutToken(token);
     } else {
       router.push("/cart");
@@ -105,6 +106,7 @@ const Checkout = () => {
         },
       },
     };
+    console.log(orderData.line_items);
     const commerce = getCommerce();
     try {
       const order = await commerce.checkout.capture(
