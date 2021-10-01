@@ -26,7 +26,7 @@ export const ShoppingCartTable: FC<Props> = ({
         </tr>
       </thead>
       <tbody>
-        {items.map((item) => {
+        {items?.map((item) => {
           const changeQuantity = (e: ChangeEvent<HTMLInputElement>) => {
             const quantity = parseInt(e.target.value) || 0;
             if (handleChangeQuantity) handleChangeQuantity(item.id, quantity);

@@ -19,6 +19,7 @@ import { PaymentInfo } from "../components/checkout/PaymentInfo";
 import { ActionButtons } from "../components/checkout/ActionButtons";
 import CheckIcon from "../components/icons/CheckIcon";
 import getCommerce from "../utils/commerce";
+import { ShoppingCartTable } from "../components/ShoppingCartTable";
 
 const FORM_LABELS = [
   "Customer Infomation",
@@ -146,62 +147,77 @@ const Checkout = () => {
   };
 
   return (
-    <div className='p-4 border border-gray-200 rounded mx-auto mb-8 bg-white'>
-      <h3 className='font-bold text-2xl flex justify-center mb-8'>Checkout</h3>
-      <Tabs
-        selectedIndex={activeStep}
-        onSelect={(nextIndex: number) => setActiveStep(nextIndex)}
-      >
-        <TabList className='flex'>
-          {FORM_LABELS.map((formLabel, index) => {
-            const finishedStep = index < activeStep;
-            return (
-              <Tab key={index} className='flex flex-col items-center px-4'>
-                <p className='flex justify-center w-8 h-8 rounded-full bg-blue-900 p-1 font-bold text-white'>
-                  {finishedStep ? <CheckIcon /> : index + 1}
-                </p>
-                <span className='text-sm font-semibold uppercase mt-2'>
-                  {formLabel}
-                </span>
-              </Tab>
-            );
-          })}
-        </TabList>
-        <p className='text-red-500 text-xs font-semibold px-4 pt-4'>
-          * All fields are required
-        </p>
-        <TabPanel>
-          <CustomerInfo
-            customerInfo={customerInfo}
-            handleChangeCustomerInfo={handleChangeCustomerInfo}
-          />
-        </TabPanel>
-        <TabPanel>
-          <ShippingInfo
-            shippingInfo={shippingInfo}
-            handleChangeShippingInfo={handleChangeShippingInfo}
-            checkoutTokenId={checkoutToken?.id}
-          />
-        </TabPanel>
-        <TabPanel>
-          <PaymentInfo
-            paymentInfo={paymentInfo}
-            handleChangePaymentInfo={handleChangePaymentInfo}
-          />
-        </TabPanel>
-      </Tabs>
-      <ActionButtons
-        isFirstStep={activeStep === 0}
-        isLastStep={activeStep === FORM_LABELS.length - 1}
-        handleGoBack={handleGoBack}
-        handleNext={handleNext}
-        handleConfirmOrder={handleConfirmOrder}
-      />
-      <div className='text-red-500 text-sm font-semibold px-4 pt-4'>
-        {errors.map((error, index) => (
-          <p key={index}>{error}</p>
-        ))}
+    <div className='flex flex-col-reverse w-full justify-center lg:items-start lg:flex-row px-8'>
+      <div className='p-4 border border-gray-200 rounded mb-8 bg-white'>
+        <h3 className='font-bold text-2xl flex justify-center mb-8'>
+          Checkout
+        </h3>
+        <Tabs
+          selectedIndex={activeStep}
+          onSelect={(nextIndex: number) => setActiveStep(nextIndex)}
+        >
+          <TabList className='flex'>
+            {FORM_LABELS.map((formLabel, index) => {
+              const finishedStep = index < activeStep;
+              return (
+                <Tab key={index} className='flex flex-col items-center px-4'>
+                  <p className='flex justify-center w-8 h-8 rounded-full bg-blue-900 p-1 font-bold text-white'>
+                    {finishedStep ? <CheckIcon /> : index + 1}
+                  </p>
+                  <span className='text-sm font-semibold uppercase mt-2'>
+                    {formLabel}
+                  </span>
+                </Tab>
+              );
+            })}
+          </TabList>
+          <p className='text-red-500 text-xs font-semibold px-4 pt-4'>
+            * All fields are required
+          </p>
+          <TabPanel>
+            <CustomerInfo
+              customerInfo={customerInfo}
+              handleChangeCustomerInfo={handleChangeCustomerInfo}
+            />
+          </TabPanel>
+          <TabPanel>
+            <ShippingInfo
+              shippingInfo={shippingInfo}
+              handleChangeShippingInfo={handleChangeShippingInfo}
+              checkoutTokenId={checkoutToken?.id}
+            />
+          </TabPanel>
+          <TabPanel>
+            <PaymentInfo
+              paymentInfo={paymentInfo}
+              handleChangePaymentInfo={handleChangePaymentInfo}
+            />
+          </TabPanel>
+        </Tabs>
+        <ActionButtons
+          isFirstStep={activeStep === 0}
+          isLastStep={activeStep === FORM_LABELS.length - 1}
+          handleGoBack={handleGoBack}
+          handleNext={handleNext}
+          handleConfirmOrder={handleConfirmOrder}
+        />
+        <div className='text-red-500 text-sm font-semibold px-4 pt-4'>
+          {errors.map((error, index) => (
+            <p key={index}>{error}</p>
+          ))}
+        </div>
       </div>
+      {cart.data?.line_items?.length > 0 && (
+        <div className='flex flex-col mb-8 rounded p-4 bg-white lg:ml-8 lg:mb-0'>
+          <div className='flex'>
+            <ShoppingCartTable notEditable items={cart.data?.line_items} />
+          </div>
+          <div className='flex px-4 justify-between'>
+            <p className='text-xl font-semibold'>Subtotal</p>
+            <p className='text-xl font-semibold text-blue-900'>{`$${cart.data?.subtotal.raw}`}</p>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
